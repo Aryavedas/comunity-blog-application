@@ -72,5 +72,12 @@ class UserController extends Controller
         ]);
     }
 
-    
+    public function destroy(User $user)
+    {
+        $user->delete();
+        return redirect('/#member-list')->with([
+            'pesan' => 'delete',
+            'nama' => $user->nama
+        ]);
+    }
 }
