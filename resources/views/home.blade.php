@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('nav-home-active', 'active')
 
 @section('content')
 

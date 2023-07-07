@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('nav-register-active', 'active')
 
 @section('content')
     <!-- HEADER IMAGE -->

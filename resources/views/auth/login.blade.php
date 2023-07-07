@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('nav-login-active', 'active')
+
 @section('content')
     <!-- HEADER IMAGE -->
     <header id="login-header" class="header-image text-white d-none d-md-block">

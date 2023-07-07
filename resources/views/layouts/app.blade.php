@@ -32,16 +32,16 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link p-4 active" href="{{ route('home') }}">Home</a>
+                        <a class="nav-link p-4 @yield('nav-home-active')" href="{{ route('home') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link p-4" href="#">Blog</a>
+                        <a class="nav-link p-4 @yield('nav-blog-active')" href="#">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link p-4" href="#">Article</a>
+                        <a class="nav-link p-4 @yield('nav-article-active')" href="#">Article</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link p-4" href="#">Gallery</a>
+                        <a class="nav-link p-4 @yield('nav-gallery-active')" href="#">Gallery</a>
                     </li>
                 </ul>
 
@@ -51,13 +51,13 @@
                     @guest
                         @if (Route::has('login'))
                             <li class="nav-item">
-                                <a class="nav-link p-4" href="{{ route('login') }}">Login</a>
+                                <a class="nav-link p-4 @yield('nav-login-active')" href="{{ route('login') }}">Login</a>
                             </li>
                         @endif
 
                         @if (Route::has('register'))
                             <li class="nav-item">
-                                <a class="nav-link p-4" href="{{ route('register') }}">
+                                <a class="nav-link p-4 @yield('nav-register-active')" href="{{ route('register') }}">
                                     Register</a>
                             </li>
                         @endif
