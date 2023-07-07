@@ -17,12 +17,10 @@
                     <div class="container">
                         <div class="d-none d-md-block">
                             <h1 class="display-1 bg-info px-4 pb-2 d-inline-block">
-                                Get<strong> Inspired</strong>
+                                Registrasi dan Otentikasi
                             </h1>
                             <br>
-                            <p class="bg-dark px-2 pb-1 d-inline-block">Lorem ipsum dolor, sit
-                                amet consectetur adipisicing elit. Aut cumque molestias asperiores
-                                ipsam officiis? Doloremque.</p>
+                            <p class="bg-dark px-2 pb-1 d-inline-block">Mudah daftarkan pengguna melalui proses registrasi yang lancar dan pastikan otentikasi yang aman.</p>
                         </div>
                     </div>
                 </div>
@@ -30,12 +28,10 @@
                     <div class="container">
                         <div class="d-none d-md-block text-end">
                             <h1 class="display-1 bg-dark px-4 pb-2 d-inline-block">
-                                Take<strong> Action</strong>
+                                Profil Pengguna
                             </h1>
                             <br>
-                            <p class="bg-info px-2 pb-1 d-inline-block">Lorem ipsum dolor, sit
-                                amet consectetur adipisicing elit. Aut cumque molestias asperiores
-                                ipsam officiis? Doloremque.</p>
+                            <p class="bg-info px-2 pb-1 d-inline-block"> Kelola profil pengguna.</p>
                         </div>
                     </div>
                 </div>
@@ -43,12 +39,10 @@
                     <div class="container">
                         <div class="d-none d-md-block">
                             <h1 class="display-1 bg-info px-4 pb-2 d-inline-block">
-                                Be<strong> Social</strong>
+                                Peran Pengguna
                             </h1>
                             <br>
-                            <p class="bg-dark px-2 pb-1 d-inline-block">Lorem ipsum dolor, sit
-                                amet consectetur adipisicing elit. Aut cumque molestias asperiores
-                                ipsam officiis? Doloremque.</p>
+                            <p class="bg-dark px-2 pb-1 d-inline-block">Atur peran pengguna dengan mudah, memberikan izin akses yang sesuai untuk masing-masing peran.</p>
                         </div>
                     </div>
                 </div>
@@ -56,12 +50,10 @@
                     <div class="container">
                         <div class="d-none d-md-block text-end">
                             <h1 class="display-1 bg-dark px-4 pb-2 d-inline-block">
-                                Find<strong> Stories</strong>
+                                Manajemen Izin
                             </h1>
                             <br>
-                            <p class="bg-info px-2 pb-1 d-inline-block">Lorem ipsum dolor, sit
-                                amet consectetur adipisicing elit. Aut cumque molestias asperiores
-                                ipsam officiis? Doloremque.</p>
+                            <p class="bg-info px-2 pb-1 d-inline-block">Atur dan kontrol dengan cermat izin akses pengguna untuk menjaga keamanan data dan privasi.</p>
                         </div>
                     </div>
                 </div>
@@ -84,8 +76,7 @@
                 <div class="col text-center">
                     <h1>Member List</h1>
                     <hr class="w-25 mx-auto">
-                    <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing
-                        elit. Dignissimos, vitae!</p>
+                    <p class="lead">Daftar member yang ganteng dan cantik!</p>
 
                     {{-- Untuk flash message --}}
                     @if (session()->has('pesan'))
