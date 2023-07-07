@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
@@ -49,10 +50,25 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        // Satukan ketiga komponen tanggal
+        $tanggal_lahir = $data["thn"] . str_pad($data["bln"], 2, 0, STR_PAD_LEFT) .
+            str_pad($data["tgl"], 2, 0, STR_PAD_LEFT);
+        // Input kedalam array $data agar $tanggal_lahir bisa ikut di validasi
+        $data['tanggal_lahir'] = $tanggal_lahir;
+
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'nama' => ['required', 'string', 'max:255'],
+            'tanggal_lahir' => [
+                'required', 'date', 'before:-10 years',
+                'after:-100 years'
+            ],
+            'pekerjaan' => ['sometimes', 'nullable', 'string', 'max:255'],
+            'kota' => ['sometimes', 'nullable', 'string', 'max:255'],
+            'bio_profil'  => ['sometimes', 'nullable', 'string'],
+            'gambar_profil'  => ['sometimes', 'file', 'image', 'max:2000'],
+            'background_profil'  => ['required', 'integer', 'min:1', 'max:12'],
         ]);
     }
 
@@ -64,10 +80,43 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // Satukan ketiga komponen tanggal
+        $tanggal_lahir = $data["thn"] . str_pad($data["bln"], 2, 0, STR_PAD_LEFT) .
+            str_pad($data["tgl"], 2, 0, STR_PAD_LEFT);
+
+        // Ambil request object untuk proses upload file
+        $request = request();
+
+        // Proses upload file gambar profil
+        if ($request->hasFile('gambar_profil')) {
+            // gunakan slug helper agar "nama" bisa dipakai sebagai bagian
+            // dari nama gambar_profil
+            $slug = Str::slug($data['nama']);
+
+            // Ambil extensi file asli
+            $extFile = $request->gambar_profil->getClientOriginalExtension();
+
+            // Generate nama gambar, gabungan dari slug "nama"+time()+extensi file
+            $namaFile = $slug . '-' . time() . "." . $extFile;
+
+            // Proses upload, simpan ke dalam folder "uploads"
+            $request->gambar_profil->storeAs('public/uploads', $namaFile);
+        } else {
+            // jika user tidak mengupload gambar, isi dengan gambar default
+            $namaFile = 'default_profile.jpg';
+        }
+
+        // input data ke database
         return User::create([
-            'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'nama' => $data['nama'],
+            'tanggal_lahir' => $tanggal_lahir,
+            'pekerjaan' => $data['pekerjaan'],
+            'kota' => $data['kota'],
+            'bio_profil'  => $data['bio_profil'],
+            'gambar_profil'  => $namaFile,
+            'background_profil'  => $data['background_profil'],
         ]);
     }
 }
